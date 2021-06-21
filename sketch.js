@@ -32,7 +32,7 @@ var dropState = "notDropped";
 
 var gameState = "play";
 
-var timer = 18;
+var timer = 15;
 
 
 function preload(){
@@ -191,6 +191,7 @@ function setup(){
 	box2 = new FreeBox(20,500,40,70)
 
 	boxCollect = createSprite(2000,585,40,40);
+	boxCollect.y = Math.round(random(30,585));
 	boxCollect.addImage(boxImage);
 	boxCollect.scale = 0.3;
 
