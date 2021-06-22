@@ -17,8 +17,8 @@ var boxImage;
 
 var pos = "notClicked";
 var posTimer = 10;
-var collectState = "false";
-var boxCollect ;
+var collectState = "true";
+// var boxCollect ;
 
 
 var chopper,chopperRightImage,chopperLeftImage;
@@ -176,7 +176,6 @@ function setup(){
 
     rightBar = createSprite(2000,windowHeight/1.3,10,1000);
 	rightBar.visible = false;
-
 	upBar = createSprite(windowWidth/2,windowHeight/12,5400,10);
 	upBar.visible = false;
 
@@ -190,10 +189,10 @@ function setup(){
 	box1 = new FreeBox(50,350,70,40);
 	box2 = new FreeBox(20,500,40,70)
 
-	boxCollect = createSprite(2000,585,40,40);
-	boxCollect.y = Math.round(random(30,585));
-	boxCollect.addImage(boxImage);
-	boxCollect.scale = 0.3;
+	// boxCollect = createSprite(2000,585,40,40);
+	// boxCollect.y = Math.round(random(30,585));
+	// boxCollect.addImage(boxImage);
+	// boxCollect.scale = 0.3;
 
 
 
@@ -209,9 +208,9 @@ function draw(){
 	chopper.depth = dropBox1Sprite.depth;
 	chopper.depth = chopper.depth+1;
 
-	timer = timer-0.03;
-	if(timer<=0){
-		timer = timer+0.03;
+	// timer = timer-0.03;
+	// if(timer<=0){
+	// 	timer = timer+0.03;
 		
 		// textSize(35);
 		// fill(255,0,0);
@@ -219,7 +218,7 @@ function draw(){
 		
 
 
-	}
+	// }
 
 	
 
@@ -229,12 +228,13 @@ function draw(){
 
 	fill("white");
 	textSize(28);
-	text("Time Left: "+Math.round(timer)+" secs",20,40);
+	// text("Time Left: "+Math.round(timer)+" secs",20,40);
 
 	textSize(24);
-	text("Go 'opposite' to right's 'opposite'",20,70);
-	text("Collect box - space - drop on the center platform",20,100);
-	text("Before timer hits 0",20,130);
+	text("Press space - drop the box on the middle platform",20,40);
+	// text("Go 'opposite' to right's 'opposite'",20,70);
+	// text("Collect box - space - drop on the center platform",20,100);
+	// text("Before timer hits 0",20,130);
 
 
 	 
@@ -324,7 +324,7 @@ function draw(){
 		gameState = "lose";
 	}
 
-	if((gameState==="lose"||timer<1)&&gameState!="win"){
+	if((gameState==="lose")&&gameState!="win"){
 		textSize(35);
 		fill(255,0,0);
 		text("You lost !!",windowWidth/2.4,windowHeight/2);
@@ -389,7 +389,7 @@ function draw(){
 	// chopper.depth = chopperHook.depth;
 	// chopperHook.depth = chopper.depth+1;
 
-	if(keyWentDown("space")&&dropState==="notDropped"&&collectState==="true"&&timer>3){
+	if(keyWentDown("space")&&dropState==="notDropped"&&collectState==="true"){
 		Matter.Body.setStatic(dropBox1,false);
 		//dropBox1.position.x = chopper.x;
 	    //dropBox1.position.y = chopper.y;
@@ -425,18 +425,18 @@ function draw(){
 
 
 	// Collecting Box
-	if(chopper.isTouching(boxCollect)&&timer>=1){
-		collectState = "true";
-		boxCollect.visible = false;
+	// if(chopper.isTouching(boxCollect)&&timer>=1){
+	// 	collectState = "true";
+	// 	boxCollect.visible = false;
 
-	}
+	// }
 	
 
 
 	drawSprites();
 
 	// text("PosTimer:"+posTimer,200,200);
-	text("Collect Me",boxCollect.x-30,boxCollect.y-30);
+	// text("Collect Me",boxCollect.x-30,boxCollect.y-30);
 
 }
 
